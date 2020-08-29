@@ -51,6 +51,7 @@ public class QSHeader extends SettingsPreferenceFragment implements
     private SwitchPreference mHeaderEnabled;
     private Preference mFileHeader;
     private String mFileHeaderProvider;
+    private CustomSeekBarPreference mQsHeaderOffset;
 
     private static final String CUSTOM_HEADER_BROWSE = "custom_header_browse";
     private static final String CUSTOM_HEADER_IMAGE = "status_bar_custom_header";
@@ -60,6 +61,7 @@ public class QSHeader extends SettingsPreferenceFragment implements
     private static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
     private static final String CUSTOM_HEADER_ENABLED = "status_bar_custom_header";
     private static final String FILE_HEADER_SELECT = "file_header_select";
+    private static final String QS_HEADER_OFFSET = "status_bar_custom_header_height"; 
 
     private static final int REQUEST_PICK_IMAGE = 0;
 
@@ -113,6 +115,12 @@ public class QSHeader extends SettingsPreferenceFragment implements
 
         mFileHeader = findPreference(FILE_HEADER_SELECT);
         mFileHeader.setEnabled(providerName.equals(mFileHeaderProvider));
+
+        mQsHeaderOffset = (CustomSeekBarPreference) findPreference(QS_HEADER_OFFSET);
+        final int headerOffset = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_HEIGHT, 25);
+            mQsHeaderOffset.setValue((headerOffset));
+            mQsHeaderOffset.setOnPreferenceChangeListener(this);
     }
 
     private void updateHeaderProviderSummary(boolean headerEnabled) {
@@ -167,6 +175,12 @@ public class QSHeader extends SettingsPreferenceFragment implements
             case CUSTOM_HEADER_ENABLED:
                 Boolean headerEnabled = (Boolean) newValue;
                 updateHeaderProviderSummary(headerEnabled);
+                return true;
+
+            case QS_HEADER_OFFSET:
+                Integer headerOffset = (Integer) newValue;
+                Settings.System.putInt(resolver,
+                        Settings.System.STATUS_BAR_CUSTOM_HEADER_HEIGHT, headerOffset);
                 return true;
 
             default:
