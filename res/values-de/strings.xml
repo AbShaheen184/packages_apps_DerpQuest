@@ -476,4 +476,8 @@
     <string name="qs_brightness_position_bottom_title">Helligkeitsregler unten</string>
     <string name="qs_brightness_position_bottom_summary">Zeigen Sie den Helligkeitsregler in den unteren Schnelleinstellungen an</string>
 
+    <!-- Show Statusbar on Lockscreen -->
+    <string name="lockscreen_status_bar_title">Statusleiste</string>
+    <string name="lockscreen_status_bar_summary">Statusleiste auf dem Sperrbildschirm anzeigen</string>
+
 </resources>
