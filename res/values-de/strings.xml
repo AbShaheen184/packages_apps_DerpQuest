@@ -464,4 +464,10 @@
     <string name="screen_off_animation_default">Standard</string>
     <string name="screen_off_animation_crt">CRT</string>
     <string name="screen_off_animation_scale">Skalieren</string>
+
+    <!-- QS media player -->
+    <string name="qs_media">Schnelleinstellungen Media</string>
+    <string name="qs_media_player_title">Media-Player</string>
+    <string name="qs_media_player_summary_on">Media-Player in QS anzeigen\nErfordert einen SystemUI-Neustart</string>
+    <string name="qs_media_player_summary_off">Media-Player als Benachrichtigung anzeigen\nErfordert einen SystemUI-Neustart</string>
 </resources>
